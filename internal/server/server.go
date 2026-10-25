@@ -6,6 +6,8 @@ import (
 	"meticuly-assignment-api/internal/router"
 
 	"github.com/gin-gonic/gin"
+	"github.com/gin-contrib/cors"
+
 )
 
 // func init() {
@@ -15,6 +17,12 @@ import (
 func RunServer() error {
 	r := gin.Default()
 	ctx := context.Background()
+
+	r.Use(cors.New(cors.Config{
+        AllowOrigins: []string{"http://localhost:3000"},
+        AllowMethods: []string{"GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"},
+        AllowHeaders: []string{"Origin", "Content-Type", "Authorization"},
+    }))
 
 	serverHandler := handler.New(ctx)
 	router.New(r, serverHandler)
