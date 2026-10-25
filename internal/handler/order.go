@@ -8,7 +8,7 @@ import (
 )
 
 func (h *Handler) GetOrders(c *gin.Context) {
-	orders := h.service.GetOrder() 
+	orders := h.service.GetOrders() 
 	response.Success(c, 200, orders)
 }
 

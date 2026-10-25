@@ -1,8 +1,9 @@
 package router
 
 import (
-	"github.com/gin-gonic/gin"
 	"meticuly-assignment-api/internal/handler"
+
+	"github.com/gin-gonic/gin"
 )
 
 func New(r *gin.Engine, h *handler.Handler){
@@ -18,6 +19,15 @@ func New(r *gin.Engine, h *handler.Handler){
 			
 			order.POST("", h.CreateOrder)
 		}
-		// api.GET("/orders", h.GetAll)
+		
+		resource := api.Group("/resource")
+		{
+			resource.GET("", h.GetResources)
+		}
+
+		log := api.Group("/log")
+		{
+			log.GET("", h.GetLogs)
+		}
 	}
 }

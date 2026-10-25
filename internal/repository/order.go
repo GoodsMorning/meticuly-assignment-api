@@ -2,7 +2,7 @@ package repository
 
 import "meticuly-assignment-api/internal/model"
 
-func (r *Repository) GetOrder() []model.ProductionOrder {
+func (r *Repository) GetOrders() []model.ProductionOrder {
 	return r.mockMemory.GetOrders()
 }
 

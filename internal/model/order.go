@@ -1,7 +1,10 @@
 package model
 
+import "time"
+
 type ProductionOrder struct {
 	ID         string      `json:"id"`
+	CreatedAt  time.Time   `json:"created_at"`
 	Operations []Operation `json:"operations"`
 }
 
