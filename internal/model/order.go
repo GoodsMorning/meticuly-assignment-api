@@ -9,15 +9,29 @@ type ProductionOrder struct {
 }
 
 type Operation struct {
-	Step      string     `json:"step"`
-	Start     int        `json:"start"`
-	Duration  int        `json:"duration"`
-	Status    string     `json:"status"`
-	Resources []string   `json:"resources"`
-	Materials []Material `json:"materials"`
+	Step      string      `json:"step"`
+	Start     int         `json:"start"`
+	Duration  int         `json:"duration"`
+	Status    OrderStatus `json:"status"`
+	Resources []string    `json:"resources"`
+	Materials []Material  `json:"materials"`
 }
 
 type OrderSummary struct {
 	Status string `json:"status"`
 	Count  int    `json:"count"`
 }
+
+type CreateOrderRequest struct {
+	ID         string     `json:"id"`
+	Operations []StepType `json:"operations"`
+}
+
+type OrderStatus string
+
+const (
+	OrderStatusQueued     OrderStatus = "queued"
+	OrderStatusInProgress OrderStatus = "in-progress"
+	OrderStatusBlocked    OrderStatus = "blocked"
+	OrderStatusFinished   OrderStatus = "finished"
+)

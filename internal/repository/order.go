@@ -6,7 +6,7 @@ func (r *Repository) GetOrders() []model.ProductionOrder {
 	return r.mockMemory.GetOrders()
 }
 
-func (r *Repository) CreateOrder(order model.ProductionOrder) model.ProductionOrder {
+func (r *Repository) CreateOrder(order model.CreateOrderRequest) (model.ProductionOrder, error) {
 	return r.mockMemory.CreateOrder(order)
 }
 
@@ -31,7 +31,7 @@ func (r *Repository) GetOrderSummary() []model.OrderSummary {
 }
 
 func getOrderStatus(order model.ProductionOrder) string {
-	statuses := make([]string, 0, len(order.Operations))
+	statuses := make([]model.OrderStatus, 0, len(order.Operations))
 
 	for _, operation := range order.Operations {
 		statuses = append(statuses, operation.Status)

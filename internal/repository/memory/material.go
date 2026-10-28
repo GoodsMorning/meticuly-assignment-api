@@ -1,10 +1,22 @@
 package memory
 
-import "meticuly-assignment-api/internal/model"
-
+import (
+	"fmt"
+	"meticuly-assignment-api/internal/model"
+)
 
 func (m *Memory) GetMaterialStock() []model.MaterialStock {
 	return m.materials
+}
+
+func (m *Memory) UpdateMaterialStock(updated model.MaterialStock) error {
+	for i, material := range m.materials {
+		if material.Name == updated.Name {
+			m.materials[i] = updated
+			return nil
+		}
+	}
+	return fmt.Errorf("material not found: %s", updated.Name)
 }
 
 func mockMaterial() []model.MaterialStock {
@@ -13,7 +25,7 @@ func mockMaterial() []model.MaterialStock {
 		{Name: "Material B", Unit: "pcs", Stock: 60, Consumed: 8, Reserved: 6},
 		{Name: "Fasteners", Unit: "pcs", Stock: 300, Consumed: 40, Reserved: 32},
 		{Name: "Material C", Unit: "boxes", Stock: 40, Consumed: 0, Reserved: 4},
-		{Name: "Calibration Fluid", Unit: "L", Stock: 5, Consumed: 0.5, Reserved: 0},
+		{Name: "Calibration Fluid", Unit: "L", Stock: 45, Consumed: 1, Reserved: 0},
 		{Name: "Label Roll", Unit: "roll", Stock: 6, Consumed: 0, Reserved: 1},
 	}
 }

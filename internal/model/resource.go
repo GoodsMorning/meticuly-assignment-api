@@ -1,14 +1,18 @@
 package model
 
-type Resource struct {
-	ID   string       `json:"id"`
-	Name string       `json:"name"`
-	Type ResourceType `json:"type"`
-}
-
-type ResourceType string
+type ResourceStatus string
 
 const (
-	ResourceTypeMachine ResourceType = "machine"
-	ResourceTypeStation ResourceType = "station"
+	ResourceStatusBusy    ResourceStatus = "busy"
+	ResourceStatusIdle    ResourceStatus = "idle"
+	ResourceStatusBlocked ResourceStatus = "blocked"
 )
+
+type Resource struct {
+	ID          string         `json:"id"`
+	Name        string         `json:"name"`
+	Status      ResourceStatus `json:"status"`
+	Utilization float64        `json:"utilization"`
+	Orders      []string       `json:"orders"`
+	Note        string         `json:"note"`
+}
