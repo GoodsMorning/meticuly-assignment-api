@@ -5,6 +5,7 @@ import "meticuly-assignment-api/internal/model"
 func (m *Memory) GetResources() []model.Resource {
 	return m.resources
 }
+
 func mockResources() []model.Resource {
 	return []model.Resource{
 		{ID: "RES-001", Name: "Machine 01", Type: "Machine"},

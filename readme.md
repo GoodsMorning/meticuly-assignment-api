@@ -13,3 +13,5 @@ go run ./cmd/api
 ```
 
 The server runs at `http://localhost:8080` by default.
+
+For the Fronted Web Repo [meticuly-assignment-web](https://github.com/GoodsMorning/meticuly-assignment-web)

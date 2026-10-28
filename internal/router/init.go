@@ -20,9 +20,9 @@ func New(r *gin.Engine, h *handler.Handler){
 			order.POST("", h.CreateOrder)
 		}
 		
-		resource := api.Group("/resource")
+		resource := api.Group("/stock")
 		{
-			resource.GET("", h.GetResources)
+			resource.GET("", h.GetStock)
 		}
 
 		log := api.Group("/log")
